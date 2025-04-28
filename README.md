@@ -1,4 +1,4 @@
-Docker image with [`cargo-outdated`](https://github.com/kbknapp/cargo-outdated)
+Docker image with [`cargo-outdated`](https://crates.io/crates/cargo-outdated)
 for use by GitHub Actions
 
 Runs `cargo outdated --exit-code=1` by default.
