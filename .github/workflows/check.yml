@@ -1,0 +1,25 @@
+name: Check
+on:
+  schedule:
+    - cron: "0 12 * * *" # daily at 12 utc
+  workflow_dispatch:
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Outdated
+        shell: bash
+        run: |
+          NAME="$(basename $(pwd))"
+          CURRENT=$(git describe --tags --abbrev=0)
+          AVAILABLE=$(curl -s https://crates.io/api/v1/crates/$NAME/versions |jq -r '[.versions[] | select(.yanked == false)][0].num')
+          if [ "$CURRENT" == "$AVAILABLE" ]; then
+            echo "Current version ($CURRENT) of \`$NAME\` is up-to-date!"
+            exit 0
+          else
+            echo "Current version ($CURRENT) of \`$NAME\` is outdated ($AVAILABLE)!"
+            exit 1
+          fi
