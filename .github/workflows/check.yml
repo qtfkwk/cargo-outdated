@@ -13,6 +13,7 @@ jobs:
       - name: Outdated
         shell: bash
         run: |
+          set -xeo pipefail
           NAME="$(basename $(pwd))"
           CURRENT=$(git describe --tags --abbrev=0)
           AVAILABLE=$(curl -s https://crates.io/api/v1/crates/$NAME/versions |jq -r '[.versions[] | select(.yanked == false)][0].num')
