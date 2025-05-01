@@ -18,7 +18,7 @@ examples.
 
 GitHub Actions:
 
-- `check`: Checks for upstream release of [`cargo-outdated`]
+- [`check`]: Checks for upstream release of [`cargo-outdated`]
 
 See also:
 
@@ -26,4 +26,5 @@ See also:
 - [Docker Hub](https://hub.docker.com/r/qtfk/cargo-outdated)
 
 [`cargo-outdated`]: https://crates.io/crates/cargo-outdated
+[`check`]: https://github.com/qtfkwk/cargo-outdated/blob/main/.github/workflows/check.yml
 
